@@ -1,0 +1,93 @@
+# ***************************************************************************************
+# Copyright (c) 2023-2025 Peng Cheng Laboratory
+# Copyright (c) 2023-2025 Institute of Computing Technology, Chinese Academy of Sciences
+# Copyright (c) 2023-2025 Beijing Institute of Open Source Chip
+#
+# iEDA is licensed under Mulan PSL v2.
+# You can use this software according to the terms and conditions of the Mulan PSL v2.
+# You may obtain a copy of Mulan PSL v2 at:
+# http://license.coscl.org.cn/MulanPSL2
+#
+# THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND,
+# EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT,
+# MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
+#
+# See the Mulan PSL v2 for more details.
+# ***************************************************************************************
+
+Checks: >
+  readability-identifier-naming
+
+#  readability-*
+#  -readability-braces-around-statements,
+#  -readability-identifier-length,
+#  -readability-magic-numbers,
+#  -readability-named-parameter,
+#  -readability-redundant-declaration,
+#  -readability-function-cognitive-complexity
+# abseil-*,
+# boost-*,
+# bugprone-*,
+# google-*,
+# misc-*,
+# modernize-*,
+# performance-*,
+# portability-*,
+# -google-readability-braces-around-statements,
+# -google-readability-namespace-comments,
+# -google-runtime-references,
+# -misc-non-private-member-variables-in-classes,
+# -misc-const-correctness,
+# -modernize-return-braced-init-list,
+# -modernize-use-trailing-return-type,
+# -modernize-avoid-c-arrays,
+# -performance-move-const-arg,
+
+# Turn all the warnings from the checks above into errors.
+# WarningsAsErrors: "*"
+
+HeaderFilterRegex: '*.h, *.hpp, *.hh'
+
+CheckOptions:
+  # Use underscores to separate words in local variable names
+  - { key: readability-identifier-naming.LocalVariableCase,           value: lower_case }
+  - { key: readability-identifier-naming.LocalVariableIgnoredRegexp,  value: '_[a-zA-Z_]+' }
+  # Use an underscore as a prefix of class member variables, ex.: _file_name
+  - { key: readability-identifier-naming.ClassMemberCase,             value: lower_case }
+  - { key: readability-identifier-naming.ClassMemberPrefix,           value: _          }
+  # Use camel case for class function names, ex.: doSomething()
+  - { key: readability-identifier-naming.ClassMethodCase,             value: camelBack }
+  # Use "get" or "set" to access class member, ex.: get_file_name(), set_file_name()
+  - { key: readability-identifier-naming.ClassMethodIgnoredRegexp,    value: '[gs]et_[a-zA-Z_]+' }
+  # Class names are in PASCAL style, which means the first letter is capitalized, ex.: MyClass
+  - { key: readability-identifier-naming.ClassCase,                   value: CamelCase  }
+  - { key: readability-identifier-naming.StructCase,                  value: CamelCase  }
+  # Constants use 'k' as a prefix followed by Pascal case, ex.: kFileName
+  - { key: readability-identifier-naming.GlobalConstantPrefix,        value: k }
+  - { key: readability-identifier-naming.GlobalConstantCase,          value: CamelCase }
+  # Global variables use 'g' as a prefix followed by Pascal case, ex.: gFileName
+  - { key: readability-identifier-naming.GlobalVariablePrefix,        value: g }
+  - { key: readability-identifier-naming.GlobalVariableCase,          value: CamelCase }
+  # Interface classes must have 'Interface' as a suffix
+  - { key: readability-identifier-naming.AbstractClassSuffix,         value: Interface }
+  # Macro definitions are in all caps, with underscores separating words, ex.: FILE_NAME
+  - { key: readability-identifier-naming.MacroDefinitionCase,         value: UPPER_CASE }
+  - { key: readability-identifier-naming.EnumConstantCase,            value: CamelCase  }
+  - { key: readability-identifier-naming.EnumConstantPrefix,          value: k          }
+  - { key: readability-identifier-naming.GlobalFunctionCase,          value: CamelCase  }
+
+#  - { key: readability-identifier-naming.NamespaceCase,          value: aNy_CasE }
+#  - { key: readability-identifier-naming.TemplateParameterCase,  value: aNy_CasE  }
+#  - { key: readability-identifier-naming.ConstexprVariableCase,    value: aNy_CasE }
+#  - { key: readability-identifier-naming.ConstexprVariablePrefix,  value: k         }
+#  - { key: readability-identifier-naming.GlobalConstantCase,       value: aNy_CasE }
+#  - { key: readability-identifier-naming.GlobalConstantPrefix,     value: k         }
+#  - { key: readability-identifier-naming.MemberConstantCase,       value: aNy_CasE }
+#  - { key: readability-identifier-naming.MemberConstantPrefix,     value: k         }
+#  - { key: readability-identifier-naming.StaticConstantCase,       value: aNy_CasE }
+#  - { key: readability-identifier-naming.StaticConstantPrefix,     value: k         }
+#  - { key: readability-implicit-bool-conversion.AllowIntegerConditions,  value: 1   }
+#  - { key: readability-implicit-bool-conversion.AllowPointerConditions,  value: 1   }
+#  - { key: readability-function-cognitive-complexity.IgnoreMacros,  value: 1   }
+
+# reference: https://clang.llvm.org/extra/clang-tidy/checks/list.html
