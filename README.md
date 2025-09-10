@@ -1,4 +1,4 @@
-# YSYX-ZZD
+# YSYX_ZZD
 
 - LCTHW-"learn c the hard way": https://wizardforcel.gitbooks.io/lcthw/content/preface.html
   练习0到练习18， 练习32，练习33，练习42，练习44 需要完成编程算法以及附加题.
